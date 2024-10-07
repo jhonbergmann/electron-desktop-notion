@@ -1,0 +1,76 @@
+{
+  "name": "notion",
+  "productName": "Notion",
+  "version": "0.0.0",
+  "description": "An Electron application with React and TypeScript",
+  "main": "./out/main/index.js",
+  "author": "notion.com",
+  "homepage": "https://electron-vite.org",
+  "scripts": {
+    "format": "prettier --write .",
+    "typecheck:node": "tsc --noEmit -p tsconfig.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.json --composite false",
+    "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "start": "electron-vite preview",
+    "dev": "electron-vite dev --watch",
+    "build": "npm run typecheck && electron-vite build",
+    "postinstall": "electron-builder install-app-deps",
+    "build:unpack": "npm run build && electron-builder --dir",
+    "build:win": "npm run build && electron-builder --win",
+    "build:mac": "electron-vite build && electron-builder --mac",
+    "build:linux": "electron-vite build && electron-builder --linux",
+    "release": "electron-builder --publish always"
+  },
+  "build": {
+    "appId": "com.yourapp.id",
+    "win": {
+      "icon": "resources/icon.ico"
+    },
+    "mac": {
+      "icon": "resources/icon.icns"
+    },
+    "linux": {
+      "icon": "resources/icon.png"
+    }
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@radix-ui/react-collapsible": "^1.0.1",
+    "@tailwindcss/typography": "^0.5.8",
+    "@tanstack/react-query": "^4.19.1",
+    "@tiptap/extension-document": "^2.0.0-beta.202",
+    "@tiptap/extension-highlight": "^2.0.0-beta.202",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.202",
+    "@tiptap/extension-text-style": "^2.8.0",
+    "@tiptap/extension-typography": "^2.0.0-beta.202",
+    "@tiptap/react": "^2.0.0-beta.202",
+    "@tiptap/starter-kit": "^2.0.0-beta.202",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
+    "electron-router-dom": "^1.0.5",
+    "electron-store": "^8.1.0",
+    "phosphor-react": "^1.4.1",
+    "react-router-dom": "^6.4.3",
+    "tailwind-scrollbar": "^3.1.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@types/node": "^20.14.8",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "electron": "^31.0.2",
+    "electron-builder": "^24.13.3",
+    "electron-vite": "^2.3.0",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.2",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
+    "vite-tsconfig-paths": "^5.0.1"
+  }
+}
