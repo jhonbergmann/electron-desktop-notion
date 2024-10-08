@@ -21,16 +21,20 @@ jobs:
           node-version: 18
 
       - name: apt-update
-        if: startsWith(matrix.os, 'ubuntu-latest')
+        if: matrix.os == 'ubuntu-latest'
         run: sudo apt-get update
 
       - name: autoremove
-        if: startsWith(matrix.os, 'ubuntu-latest')
+        if: matrix.os == 'ubuntu-latest'
         run: sudo apt autoremove
 
       - name: Install libarchive rpm on Linux
-        if: startsWith(matrix.os, 'ubuntu-latest')
+        if: matrix.os == 'ubuntu-latest'
         run: sudo apt-get install libarchive-tools rpm
+
+      - name: Install Snapcraft on Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo snap install snapcraft --classic
 
       - name: Release Electron app
         uses: samuelmeuli/action-electron-builder@v1
